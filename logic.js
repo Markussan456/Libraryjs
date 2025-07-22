@@ -68,12 +68,47 @@ for(let a = library.length -1;a < library.length;a++){
           tabledata.textContent = library[a][props[i]];
 tablerow.appendChild(tabledata);     
     }
+    let tabledatas = document.createElement("td");
+    let deletebtn = document.createElement("button");
+    deletebtn.classList.add("btnstils");
+    deletebtn.textContent = "X";
+    tabledatas.appendChild(deletebtn);
+    tablerow.appendChild(tabledatas);
+    console.log(library[library.length-1].id);
+
+deletebtn.addEventListener("click",()=>{
+       let myid = library[library.length-1].id;
+       console.log(library[library.length-1].id);
+       console.log(myid);
+if(library[library.length-1].id == myid){
+    let index = library.findIndex(book => book.id === myid);
+   if(index !== -1)
+   {
+console.log(index);
+    library.splice(index,1);
+    tablerow.remove();
+    console.table(library);
+   }
+    
+}else{
+    console.log("error");
+}
+    });
+
 }
     } else {
       // Browser will show "Please fill out this field" messages
       console.log("Form is invalid.");
     }
 });
+
+
+
+
+
+
+
+
 for(let book of library){
     
     console.table(library);
@@ -104,9 +139,10 @@ console.log(index);
     tablerow.remove();
     console.table(library);
    }
-    
-}else{
+    else{
     console.log("error");
+    console.table(library);
+}
 }
     });
 }

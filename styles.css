@@ -1,0 +1,8 @@
+table,thead,tr,th,td{
+    border: 2px solid black;
+    padding: 1rem;
+}
+legend{
+    font-weight: bold;
+    font-size: 3rem;
+}

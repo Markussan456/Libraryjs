@@ -18,7 +18,64 @@ storebook("Shans adventures","Shansbruh",245,"yes");
 
 let table = document.querySelector("tbody");
 const props = ["title","author","pages","isread"]
+
+
+ let turnedon = false;
+let form = document.getElementById("formus");
+let addbtn = document.getElementById("add");
+addbtn.addEventListener("click",()=>{
+    if(turnedon == true){
+        form.classList.add("hidden");
+        turnedon = false;
+    }else{
+turnedon = true;
+form.classList.remove("hidden");
+
+    }
+
+});
+
+form.addEventListener("submit",(e)=>{
+e.preventDefault();
+  if (form.reportValidity()) {
+      // All fields are valid, proceed
+      const idinput = document.getElementById("tituls");
+const idtext = idinput.value;
+
+const autorsid = document.getElementById("authors");
+const autorstext = autorsid.value;
+
+const pagesid = document.getElementById("pages");
+const pagesnum = pagesid.value;
+const pages = parseInt(pagesnum);
+const readid = document.getElementById("read");
+let readcheck = "none";
+if(readid.checked){
+     readcheck = "yes";
+}
+else{
+    readcheck = "no";
+}
+
+console.log(idtext+ " "+autorstext+" "+pages+" "+readcheck);
+storebook(idtext,autorstext,pages,readcheck);
+for(let a = library.length -1;a < library.length;a++){
+    console.table(library);
+    let tablerow = document.createElement("tr");
+    table.appendChild(tablerow);
+    for(let i = 0 ; i< props.length ;i++){
+          let tabledata = document.createElement("td");
+          tabledata.textContent = library[a][props[i]];
+table.appendChild(tabledata);     
+    }
+}
+    } else {
+      // Browser will show "Please fill out this field" messages
+      console.log("Form is invalid.");
+    }
+});
 for(let book of library){
+    console.table(library);
     let tablerow = document.createElement("tr");
     table.appendChild(tablerow);
     for(let i = 0 ; i< props.length ;i++){
@@ -28,8 +85,3 @@ table.appendChild(tabledata);
     }
 }
 
-let form = document.getElementById("formus");
-let addbtn = document.getElementById("add");
-addbtn.addEventListener("click",()=>{
-form.classList.remove("hidden");
-});

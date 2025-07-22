@@ -19,19 +19,17 @@ storebook("Shans adventures","Shansbruh",245,"yes");
 let table = document.querySelector("tbody");
 const props = ["title","author","pages","isread"]
 for(let book of library){
-    
-    
     let tablerow = document.createElement("tr");
     table.appendChild(tablerow);
     for(let i = 0 ; i< props.length ;i++){
-        
           let tabledata = document.createElement("td");
           tabledata.textContent = book[props[i]];
-table.appendChild(tabledata);  
-  
-        
+table.appendChild(tabledata);     
     }
-
-
-
 }
+
+let form = document.getElementById("formus");
+let addbtn = document.getElementById("add");
+addbtn.addEventListener("click",()=>{
+form.classList.remove("hidden");
+});

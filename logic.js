@@ -66,7 +66,7 @@ for(let a = library.length -1;a < library.length;a++){
     for(let i = 0 ; i< props.length ;i++){
           let tabledata = document.createElement("td");
           tabledata.textContent = library[a][props[i]];
-table.appendChild(tabledata);     
+tablerow.appendChild(tabledata);     
     }
 }
     } else {
@@ -75,13 +75,39 @@ table.appendChild(tabledata);
     }
 });
 for(let book of library){
+    
     console.table(library);
     let tablerow = document.createElement("tr");
     table.appendChild(tablerow);
     for(let i = 0 ; i< props.length ;i++){
           let tabledata = document.createElement("td");
           tabledata.textContent = book[props[i]];
-table.appendChild(tabledata);     
+tablerow.appendChild(tabledata);     
     }
+    let tabledatas = document.createElement("td");
+    let deletebtn = document.createElement("button");
+    deletebtn.classList.add("btnstils");
+    deletebtn.textContent = "X";
+    tabledatas.appendChild(deletebtn);
+    tablerow.appendChild(tabledatas);
+    console.log(book.id);
+    deletebtn.addEventListener("click",()=>{
+       let myid = book.id;
+       console.log(book.id);
+       console.log(myid);
+if(book.id == myid){
+    let index = library.findIndex(book => book.id === myid);
+   if(index !== -1)
+   {
+console.log(index);
+    library.splice(index,1);
+    tablerow.remove();
+    console.table(library);
+   }
+    
+}else{
+    console.log("error");
+}
+    });
 }
 

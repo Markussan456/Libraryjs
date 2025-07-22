@@ -15,34 +15,21 @@ storebook("Lord of whatever","jk ro",45,"yes");
 storebook("Harry potter","togi",56,"yes");
 storebook("Shans adventures","Shansbruh",245,"yes");
 
-let table = document.querySelector("tbody");
 
+let table = document.querySelector("tbody");
+const props = ["title","author","pages","isread"]
 for(let book of library){
     
     
     let tablerow = document.createElement("tr");
     table.appendChild(tablerow);
-    for(let i = 0 ; i <4;i++){
-        if(i == 0 ){
+    for(let i = 0 ; i< props.length ;i++){
+        
           let tabledata = document.createElement("td");
-          tabledata.textContent = book.title;
+          tabledata.textContent = book[props[i]];
 table.appendChild(tabledata);  
-        }
-        else if (i==1){
-            let tabledata = document.createElement("td");
-            tabledata.textContent = book.author;
-table.appendChild(tabledata);
-        }
-   else if (i==2){
-            let tabledata = document.createElement("td");
-            tabledata.textContent = book.pages;
-table.appendChild(tabledata);
-        }
-           else if (i==3){
-            let tabledata = document.createElement("td");
-            tabledata.textContent = book.isread;
-table.appendChild(tabledata);
-        }
+  
+        
     }
 
 

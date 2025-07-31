@@ -47,8 +47,25 @@ const book2 = new Book("Togis Book","Boooklandia",245,"No");
      let data2 = document.createElement("td");
      let data3 = document.createElement("td");
      let data4 = document.createElement("td");
+    
+     let data4text = document.createElement("label");
+     data4.appendChild(data4text);
+     let data4box = document.createElement("input");
+     data4box.type = "checkbox";
+     data4.appendChild(data4box);
      let btncont = document.createElement("td");
      let deletebtn = document.createElement("button");
+
+data4.addEventListener("change",()=>{
+  if(!data4box.checked){
+data4text.textContent = "no";
+  }else if (data4box.checked){
+    data4text.textContent = "yes";
+  }
+  
+
+})
+
 deletebtn.textContent = "X";
 deletebtn.setAttribute("data-id", i.id);
 deletebtn.classList.add("delbtn");
@@ -75,7 +92,10 @@ btncont.appendChild(deletebtn);
 data1.textContent = i.title;
 data2.textContent = i.author;
 data3.textContent = i.pages;
-data4.textContent = i.isRead;
+data4text.textContent = i.isRead;
+if(data4text.textContent === "yes"){
+  data4box.checked = true;
+}
     }
     // loop through this.library and create book cards
   }

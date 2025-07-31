@@ -56,7 +56,7 @@ const book2 = new Book("Togis Book","Boooklandia",245,"No");
      let btncont = document.createElement("td");
      let deletebtn = document.createElement("button");
 
-data4.addEventListener("change",()=>{
+data4box.addEventListener("change",()=>{
   if(!data4box.checked){
 data4text.textContent = "no";
   }else if (data4box.checked){

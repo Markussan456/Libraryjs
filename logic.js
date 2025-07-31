@@ -47,11 +47,31 @@ const book2 = new Book("Togis Book","Boooklandia",245,"No");
      let data2 = document.createElement("td");
      let data3 = document.createElement("td");
      let data4 = document.createElement("td");
+     let btncont = document.createElement("td");
+     let deletebtn = document.createElement("button");
+deletebtn.textContent = "X";
+deletebtn.setAttribute("data-id", i.id);
+deletebtn.classList.add("delbtn");
+  deletebtn.addEventListener("click",()=>{
+   const id = deletebtn.getAttribute("data-id");
+const index = this.library.findIndex(book => book.id === id);
+
+    if (index !== -1) {
+      console.log("clicked");
+      console.log(index);
+  this.library.splice(index, 1); // deletes "You"
+  this.renderBooks();
+}
+
+   })
+
 tbody.appendChild(row1);
 row1.appendChild(data1);
 row1.appendChild(data2);
 row1.appendChild(data3);
 row1.appendChild(data4);
+row1.appendChild(btncont);
+btncont.appendChild(deletebtn);
 data1.textContent = i.title;
 data2.textContent = i.author;
 data3.textContent = i.pages;
@@ -63,7 +83,8 @@ data4.textContent = i.isRead;
   // Set up any event listeners (for form, buttons, etc.)
   setupEventListeners() {
     // handle form submission
-   
+
+ 
 let form = document.getElementById("formus");
 let addbtn = document.getElementById("add");
 addbtn.addEventListener("click", () => {
